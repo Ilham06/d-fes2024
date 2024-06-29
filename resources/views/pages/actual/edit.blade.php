@@ -15,13 +15,23 @@
                         @csrf
                         <div class="mb-3">
                             <label for="periode" class="form-label">Periode</label>
-                            <input name="periode" value="{{ $actual->periode }}" type="text" class="form-control"
-                                id="periode" />
+                            <input name="periode" value="{{ $actual->periode }}" type="text"
+                                class="form-control @error('periode') is-invalid @enderror" id="periode" />
+                            @error('periode')
+                                <div id="" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="aktual" class="form-label">Aktual</label>
-                            <input name="value" value="{{ $actual->value }}" type="text" class="form-control"
-                                id="aktual" />
+                            <input name="value" value="{{ $actual->value }}" type="text"
+                                class="form-control @error('value') is-invalid @enderror" id="aktual" />
+                            @error('value')
+                                <div id="" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="aktual" class="form-label">Keterangan</label>

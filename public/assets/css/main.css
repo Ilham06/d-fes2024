@@ -696,11 +696,17 @@ h6 {
     border-radius: 10px;
     padding: 9px 10px;
     line-height: 22px;
+    margin: 0 6px;
 }
 
 .page-header .navbar #navbarNav #leftNav > li > a:hover {
     background: #F3F6FA;
     color: #7889FF;
+}
+
+.page-header .navbar .nav-link.active {
+    background: #F3F6FA;
+    color: #7889FF !important;
 }
 
 .page-header .navbar #navbarNav #leftNav > li > a i {

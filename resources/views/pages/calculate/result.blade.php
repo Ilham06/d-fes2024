@@ -7,7 +7,8 @@
                 <div class="card-body">
                     <h5 class="card-title">Proses Perhitungan</h5>
                     <p class="card-description">
-                        Proses perhitungan dengan metode Double Exponential Smoothing menggunakan nilai alpha (2),
+                        Proses perhitungan dengan metode Double Exponential Smoothing menggunakan nilai alpha
+                        ({{ $alpha }}),
                         berdasarkan data aktual yang telah di input.
                     </p>
                     <div class="table-responsive mt-4">
@@ -29,149 +30,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>1</td>
-                                    <td>120</td>
-                                    <td>120</td>
-                                    <td>0</td>
-                                    <td>120</td>
-                                    <td>0</td>
-                                    <td>120</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0%</td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>2</td>
-                                    <td>130</td>
-                                    <td>120</td>
-                                    <td>10</td>
-                                    <td>121</td>
-                                    <td>9</td>
-                                    <td>130</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0%</td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>3</td>
-                                    <td>125</td>
-                                    <td>122.9</td>
-                                    <td>8.1</td>
-                                    <td>123</td>
-                                    <td>7.9</td>
-                                    <td>132</td>
-                                    <td>7</td>
-                                    <td>7</td>
-                                    <td>5.6%</td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>4</td>
-                                    <td>140</td>
-                                    <td>127.8</td>
-                                    <td>11.2</td>
-                                    <td>128</td>
-                                    <td>11.1</td>
-                                    <td>138</td>
-                                    <td>2</td>
-                                    <td>2</td>
-                                    <td>1.4%</td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>5</td>
-                                    <td>135</td>
-                                    <td>130.9</td>
-                                    <td>10.1</td>
-                                    <td>131</td>
-                                    <td>10.2</td>
-                                    <td>142</td>
-                                    <td>7</td>
-                                    <td>7</td>
-                                    <td>5.2%</td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">6</th>
-                                    <td>6</td>
-                                    <td>150</td>
-                                    <td>136.1</td>
-                                    <td>13.9</td>
-                                    <td>137</td>
-                                    <td>14</td>
-                                    <td>148</td>
-                                    <td>2</td>
-                                    <td>2</td>
-                                    <td>1.3%</td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">7</th>
-                                    <td>7</td>
-                                    <td>145</td>
-                                    <td>139.4</td>
-                                    <td>12.6</td>
-                                    <td>139</td>
-                                    <td>12.8</td>
-                                    <td>151</td>
-                                    <td>6</td>
-                                    <td>6</td>
-                                    <td>4.1%</td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">8</th>
-                                    <td>8</td>
-                                    <td>160</td>
-                                    <td>144.7</td>
-                                    <td>15.3</td>
-                                    <td>145</td>
-                                    <td>15.4</td>
-                                    <td>159</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>0.6%</td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">9</th>
-                                    <td>9</td>
-                                    <td>155</td>
-                                    <td>148.8</td>
-                                    <td>14.2</td>
-                                    <td>149</td>
-                                    <td>14.3</td>
-                                    <td>164</td>
-                                    <td>9</td>
-                                    <td>9</td>
-                                    <td>5.8%</td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">10</th>
-                                    <td>10</td>
-                                    <td>150</td>
-                                    <td>150.6</td>
-                                    <td>12.4</td>
-                                    <td>151</td>
-                                    <td>12.5</td>
-                                    <td>164</td>
-                                    <td>14</td>
-                                    <td>14</td>
-                                    <td>9.3%</td>
-
-                                </tr>
+                                @foreach ($result as $key => $row)
+                                    <tr>
+                                        <th scope="row">{{ $key + 1 }}</td>
+                                        <td>{{ $row['periode'] }}</td>
+                                        <td>{{ $row['aktual'] }}</td>
+                                        <td>{{ $row['s1'] }}</td>
+                                        <td>{{ $row['s2'] }}</td>
+                                        <td>{{ $row['a'] }}</td>
+                                        <td>{{ $row['b'] }}</td>
+                                        <td>{{ $row['f'] }}</td>
+                                        <td>{{ $row['e'] }}</td>
+                                        <td>{{ $row['abs_e'] }}</td>
+                                        <td>{{ $row['percent_e'] }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
 
                         </table>
+                    </div>
+                    <div class="mt-4">
+                        <p><span class="fw-bold">MAPE : </span> {{ $mape }}</p>
                     </div>
                 </div>
             </div>
@@ -180,7 +59,8 @@
                 <div class="card-body">
                     <h5 class="card-title">Hasil Perhitungan</h5>
                     <p class="card-description">
-                        Dari proses diatas, maka didapatkan hasil perhitungan untuk 3 periode selanjutnya sebagai berikut :
+                        Dari proses diatas, maka didapatkan hasil perhitungan untuk {{ $m }} periode selanjutnya
+                        sebagai berikut :
                     </p>
                     <div class="table-responsive mt-4">
                         <table class="table">
@@ -190,81 +70,26 @@
                                     <th scope="col">Periode</th>
                                     <th scope="col">Data Aktual</th>
                                     <th scope="col">Hasil Prediksi</th>
-                                    <th scope="col">Presentase Error</th>
-
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>1</td>
-                                    <td>120</td>
-                                    <td>120</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>2</td>
-                                    <td>130</td>
-                                    <td>120</td>
-                                    <td>7.69%</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>3</td>
-                                    <td>125</td>
-                                    <td>121</td>
-                                    <td>3.20%</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>4</td>
-                                    <td>140</td>
-                                    <td>126</td>
-                                    <td>10.00%</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>5</td>
-                                    <td>135</td>
-                                    <td>130</td>
-                                    <td>3.70%</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">6</th>
-                                    <td>6</td>
-                                    <td>150</td>
-                                    <td>136</td>
-                                    <td>9.33%</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">7</th>
-                                    <td>7</td>
-                                    <td>145</td>
-                                    <td>139</td>
-                                    <td>4.14%</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">8</th>
-                                    <td>8</td>
-                                    <td>160</td>
-                                    <td>145</td>
-                                    <td>9.38%</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">9</th>
-                                    <td>9</td>
-                                    <td>155</td>
-                                    <td>150</td>
-                                    <td>3.23%</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">10</th>
-                                    <td>10</td>
-                                    <td>150</td>
-                                    <td>154</td>
-                                    <td>2.67%</td>
-                                </tr>
+                                @foreach ($result as $key => $row)
+                                    <tr>
+                                        <th scope="row">{{ $key + 1 }}</td>
+                                        <td>{{ $row['periode'] }}</td>
+                                        <td>{{ $row['aktual'] }}</td>
+                                        <td>{{ $row['f'] }}</td>
+                                    </tr>
+                                @endforeach
+
+                                @foreach ($nextForecasts as $key => $forcast)
+                                    <tr class="table-secondary">
+                                        <th scope="row">{{ count($result) + ($key + 1) }}</th>
+                                        <td>m {{ $key + 1 }}</td>
+                                        <td>-</td>
+                                        <td class="fw-bold">{{ $forcast }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
 
 
@@ -286,3 +111,62 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        var data = JSON.parse(`<?php echo $chartData; ?>`);
+
+        $(document).ready(function() {
+            var options1 = {
+                chart: {
+                    height: 350,
+                    type: 'area',
+                    toolbar: {
+                        show: false,
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    curve: 'smooth'
+                },
+                colors: ['#b3baff', '#90e0db'],
+                series: [{
+                    name: 'Data Aktual',
+                    data: data.aktual
+                }, {
+                    name: 'Data Peramalan',
+                    data: data.forecasting
+                }],
+
+                xaxis: {
+                    type: 'string',
+                    categories: data.periode,
+                    labels: {
+                        style: {
+                            colors: 'rgba(94, 96, 110, .5)'
+                        }
+                    }
+                },
+                tooltip: {
+                    x: {
+                        format: 'dd/MM/yy HH:mm'
+                    },
+                },
+                grid: {
+                    borderColor: 'rgba(94, 96, 110, .5)',
+                    strokeDashArray: 4
+                }
+            }
+
+            var chart1 = new ApexCharts(
+                document.querySelector("#apex1"),
+                options1
+            );
+
+            chart1.render();
+
+        });
+    </script>
+@endpush
