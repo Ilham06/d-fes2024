@@ -18,6 +18,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/perhitungan', [CalculateController::class, 'index'])->name('calculate.index');
     Route::post('/perhitungan', [CalculateController::class, 'result'])->name('calculate.result');
+
+    Route::get('/help', [App\Http\Controllers\HomeController::class, 'help'])->name('help');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
