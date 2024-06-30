@@ -19,6 +19,11 @@ class CalculateController extends Controller
         $m = $request->m;
 
         $actuals = Actual::all();
+        
+        if (!count($actuals)) {
+            return redirect()->route('calculate.index')->with('error', 'tidak ditemukan data aktual, harap isi data aktual terlebih dahulu');
+        }
+
         $result = $this->process($actuals, $alpha);
 
         $result = collect($result);

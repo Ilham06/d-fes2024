@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActualController;
 use App\Http\Controllers\CalculateController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false]);
@@ -17,4 +18,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/perhitungan', [CalculateController::class, 'index'])->name('calculate.index');
     Route::post('/perhitungan', [CalculateController::class, 'result'])->name('calculate.result');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('user', UserController::class);
+    Route::post('user/restore/{id}', [UserController::class, 'restore'])->name('user.restore');
 });

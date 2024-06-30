@@ -8,6 +8,7 @@
                 Input nilai alpha yang akan digunakan untuk perhitungan sebelum melakukan perhitungan. nilai alpha berkisar
                 antara 0 sampai 1
             </p>
+            <x-alert-error/>
             <form action="{{ route('calculate.result') }}" method="POST">
                 @csrf
                 <div class="mb-3">
