@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ActualCreateRequest;
 use App\Http\Requests\ActualUpdateRequest;
+use App\Imports\ActualImport;
 use App\Models\Actual;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ActualController extends Controller
 {
@@ -48,5 +50,16 @@ class ActualController extends Controller
         Actual::destroy($id);
 
         return redirect()->route('actual.index')->with('success', 'Sukses menghapus data aktual');
+    }
+
+    public function import(Request $request) 
+    {
+        $request->validate([
+            'dataset' => 'required|mimes:csv,xls,xlsx'
+        ]);
+
+        Excel::import(new ActualImport, $request->file('dataset'));
+        
+        return redirect()->route('actual.index')->with('success', 'sukses import data');
     }
 }

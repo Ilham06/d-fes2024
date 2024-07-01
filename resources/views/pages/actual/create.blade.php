@@ -51,10 +51,18 @@
                         anda juga bisa menambahkan dataset anda secara langsung
                         melalui Excel
                     </p>
-                    <form>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </div>
+                    @endif
+                    <form action="{{ route('actual.import') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">Pilih file excel</label>
-                            <input class="form-control" type="file" id="formFile" />
+                            <label for="dataset" class="form-label">Pilih file excel</label>
+                            <input name="dataset" class="form-control" type="file" id="dataset" />
                         </div>
                         <button type="submit" class="btn btn-primary">
                             Submit
