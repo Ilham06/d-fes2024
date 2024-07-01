@@ -104,10 +104,10 @@
                     <div id="apex1"></div>
                 </div>
             </div>
-            <div class="">
+            {{-- <div class="">
                 <button class="btn btn-success">Export Excel</button>
                 <button class="btn btn-danger">Print PDF</button>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
