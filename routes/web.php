@@ -16,6 +16,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/aktual/{id}', [ActualController::class, 'update'])->name('actual.update');
     Route::delete('/aktual/{id}', [ActualController::class, 'destroy'])->name('actual.delete');
     Route::post('/aktual/import', [ActualController::class, 'import'])->name('actual.import');
+    Route::get('/aktual/export', [ActualController::class, 'export'])->name('actual.export');
 
     Route::get('/perhitungan', [CalculateController::class, 'index'])->name('calculate.index');
     Route::post('/perhitungan', [CalculateController::class, 'result'])->name('calculate.result');

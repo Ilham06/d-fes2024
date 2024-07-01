@@ -62,8 +62,10 @@
                         @csrf
                         <div class="mb-3">
                             <label for="dataset" class="form-label">Pilih file excel</label>
-                            <input name="dataset" class="form-control" type="file" id="dataset" />
+                            <input name="dataset" class="form-control mb-1" type="file" id="dataset" />
+                            <a href="{{ asset('assets/dataset.xlsx') }}">download template dataset</a>
                         </div>
+
                         <button type="submit" class="btn btn-primary">
                             Submit
                         </button>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ActualExport;
 use App\Http\Requests\ActualCreateRequest;
 use App\Http\Requests\ActualUpdateRequest;
 use App\Imports\ActualImport;
@@ -61,5 +62,10 @@ class ActualController extends Controller
         Excel::import(new ActualImport, $request->file('dataset'));
         
         return redirect()->route('actual.index')->with('success', 'sukses import data');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new ActualExport(), 'data-aktual.xlsx');
     }
 }

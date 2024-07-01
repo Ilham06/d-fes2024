@@ -10,7 +10,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="">
                     <a href="{{ route('actual.create') }}"><button class="btn btn-primary me-2">Tambah data</button></a>
-                    <button class="btn btn-success">Export Excel</button>
+                    <a href="{{route('actual.export')}}"><button class="btn btn-success">Export Excel</button></a>
                 </div>
                 <form action="">
                     <input type="text" id="" class="form-control" placeholder="cari data ...">
