@@ -3271,9 +3271,9 @@ ul.profile-about-list li.profile-about-list-buttons {
         flex: 0!important;
     }
 
-    .page-header .navbar #navbarNav .navbar-nav li a:not(#sidebar-toggle) {
+    /* .page-header .navbar #navbarNav .navbar-nav li a:not(#sidebar-toggle) {
         display: none;
-    }
+    } */
 
     .page-header .navbar #navbarNav #leftNav > li > a#sidebar-toggle {
         transform: rotate(-180deg);
