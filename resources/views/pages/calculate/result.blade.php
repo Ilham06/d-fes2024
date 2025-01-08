@@ -23,9 +23,9 @@
                                     <th scope="col">a</th>
                                     <th scope="col">b</th>
                                     <th scope="col">f</th>
-                                    <th scope="col">e</th>
+                                    {{-- <th scope="col">e</th>
                                     <th scope="col">abs-e</th>
-                                    <th scope="col">pe</th>
+                                    <th scope="col">pe</th> --}}
 
                                 </tr>
                             </thead>
@@ -40,9 +40,9 @@
                                         <td>{{ $row['a'] }}</td>
                                         <td>{{ $row['b'] }}</td>
                                         <td>{{ $row['f'] }}</td>
-                                        <td>{{ $row['e'] }}</td>
+                                        {{-- <td>{{ $row['e'] }}</td>
                                         <td>{{ $row['abs_e'] }}</td>
-                                        <td>{{ $row['percent_e'] }}</td>
+                                        <td>{{ $row['percent_e'] }}</td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -104,10 +104,15 @@
                     <div id="apex1"></div>
                 </div>
             </div>
-            {{-- <div class="">
-                <button class="btn btn-success">Export Excel</button>
+            <div class="">
+                @if (Request::path() !== 'hasil-peramalan')
+                    <form action="{{ route('calculate.saved') }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-success">Simpan Peramalan</button>
+                    </form>
+                @endif
                 <button class="btn btn-danger">Print PDF</button>
-            </div> --}}
+            </div>
         </div>
     </div>
 @endsection

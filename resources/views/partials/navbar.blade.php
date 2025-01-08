@@ -11,11 +11,15 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::path() == 'aktual' ? 'active' : '' }}"
-                            href="{{ route('actual.index') }}">Data Aktual</a>
+                            href="{{ route('actual.index') }}">Data penjualan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::path() == 'perhitungan' ? 'active' : '' }}"
                             href="{{ route('calculate.index') }}">Perhitungan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::path() == 'hasil-peramalan' ? 'active' : '' }}"
+                            href="{{ route('calculate.savedResult') }}">Hasil Peramalan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::path() == 'user' ? 'active' : '' }}" href="{{route('user.index')}}">Pengguna</a>

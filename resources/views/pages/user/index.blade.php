@@ -34,7 +34,7 @@
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td class="fw-bold">{{ $user['is_admin'] ? 'admin' : 'user' }}</td>
+                                <td class="fw-bold">{{ $user['is_admin'] ? 'Admin' : 'Direktur' }}</td>
                                 <td>
                                     @if ($user['deleted_at'])
                                         <span class="badge rounded-pill bg-primary">Tidak Aktif</span>

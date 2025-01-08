@@ -5,7 +5,7 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Tambah data aktual</h5>
+                    <h5 class="card-title">Tambah data aktual penjualan</h5>
                     <p class="card-description">
                         Form tambah data aktual yang akan menjadi referensi
                         perhitungan
@@ -24,7 +24,7 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="aktual" class="form-label">Aktual</label>
+                            <label for="aktual" class="form-label">Jumlah aktual penjualan</label>
                             <input name="value" value="{{ $actual->value }}" type="text"
                                 class="form-control @error('value') is-invalid @enderror" id="aktual" />
                             @error('value')
