@@ -111,7 +111,7 @@
                         <button type="submit" class="btn btn-success">Simpan Peramalan</button>
                     </form>
                 @endif
-                <button class="btn btn-danger">Print PDF</button>
+                <button class="btn btn-danger" onclick="window.location.href='{{ route('calculate.printPDF') }}'">Print PDF</button>
             </div>
         </div>
     </div>

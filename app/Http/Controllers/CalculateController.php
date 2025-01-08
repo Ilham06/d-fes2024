@@ -7,6 +7,8 @@ use App\Models\Actual;
 use App\Services\CalculateService;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 
 class CalculateController extends Controller
 {
@@ -102,5 +104,22 @@ class CalculateController extends Controller
         Cache::put('isSaved', true, now()->addDays(7));
 
         return view('pages.calculate.result', compact('result', 'mape', 'nextForecasts', 'chartData', 'alpha', 'm'));
+    }
+
+    public function printPDF()
+    {
+        // Mengambil data dari cache atau session
+        $result = Cache::get('calculation_result');
+        $mape = Cache::get('calculation_mape');
+        $nextForecasts = Cache::get('calculation_nextForecasts');
+        $chartData = Cache::get('calculation_chartData');
+        $alpha = Cache::get('calculation_alpha');
+        $m = Cache::get('calculation_m');
+
+        // Membuat PDF menggunakan view
+        $pdf = FacadePdf::loadView('pages.calculate.print_pdf', compact('result', 'mape', 'nextForecasts', 'chartData', 'alpha', 'm'));
+
+        // Mengunduh file PDF
+        return $pdf->download('perhitungan.pdf');
     }
 }
