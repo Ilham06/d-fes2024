@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('actuals', function (Blueprint $table) {
-            $table->id();
-            $table->string('periode');
-            $table->integer('value');
-            $table->string('note')->nullable();
-            $table->timestamps();
+        Schema::table('forecastings', function (Blueprint $table) {
+            $table->boolean('is_saved')->default(false);
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('actuals');
+        Schema::table('forecastings', function (Blueprint $table) {
+            //
+        });
     }
 };

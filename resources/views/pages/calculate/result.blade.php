@@ -104,14 +104,12 @@
                     <div id="apex1"></div>
                 </div>
             </div>
-            <div class="">
-                @if (Request::path() !== 'hasil-peramalan')
-                    <form action="{{ route('calculate.saved') }}" method="post">
-                        @csrf
-                        <button type="submit" class="btn btn-success">Simpan Peramalan</button>
-                    </form>
-                @endif
-                <button class="btn btn-danger" onclick="window.location.href='{{ route('calculate.printPDF') }}'">Print PDF</button>
+            <div class="flex gap-2">
+                <form action="{{ route('calculate.saved') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $record->id }}">
+                    <button type="submit" class="btn btn-success">Simpan Peramalan</button>
+                </form>
             </div>
         </div>
     </div>

@@ -23,10 +23,7 @@ class ActualUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'periode' => [
-                'required',
-                Rule::unique('actuals')->ignore($this->id)
-            ],
+            'periode' => 'required',
             'value' => 'required',
             'product_id' => 'required',
             'note' => 'nullable'

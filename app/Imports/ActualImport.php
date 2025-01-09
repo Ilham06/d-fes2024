@@ -12,8 +12,9 @@ class ActualImport implements ToModel, WithValidation, WithHeadingRow
     public function rules(): array
     {
         return [
-            'periode' => 'required|unique:actuals,periode',
-            'data' => 'required|integer'
+            'periode' => 'required',
+            'data' => 'required|integer',
+            'produk' => 'required'
         ];
     }
 
@@ -26,7 +27,8 @@ class ActualImport implements ToModel, WithValidation, WithHeadingRow
     {
         return new Actual([
             'periode'  => $row['periode'],
-            'value' => $row['data']
+            'value' => $row['data'],
+            'product_id' => $row['produk']
         ]);
     }
 }

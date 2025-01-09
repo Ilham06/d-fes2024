@@ -22,7 +22,7 @@ class ActualCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'periode' => 'required|unique:actuals,periode',
+            'periode' => 'required',
             'product_id' => 'required',
             'value' => 'required',
             'note' => 'nullable'

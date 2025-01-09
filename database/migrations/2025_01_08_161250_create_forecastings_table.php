@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('forecastings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->nullable()->constrained('products')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('value');
+            $table->string('value');
             $table->string('path');
             $table->timestamps();
         });

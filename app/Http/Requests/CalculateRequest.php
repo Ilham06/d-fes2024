@@ -23,7 +23,8 @@ class CalculateRequest extends FormRequest
     {
         return [
             'alpha' => 'required|numeric',
-            'm' => 'required|integer'
+            'product_id' => 'required'
+            // 'm' => 'required|integer'
         ];
     }
 }

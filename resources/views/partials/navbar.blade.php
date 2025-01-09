@@ -23,7 +23,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::path() == 'hasil-peramalan' ? 'active' : '' }}"
-                            href="{{ route('calculate.savedResult') }}">Hasil Peramalan</a>
+                            href="{{ route('forecasting.index') }}">Hasil Peramalan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::path() == 'user' ? 'active' : '' }}" href="{{route('user.index')}}">Pengguna</a>

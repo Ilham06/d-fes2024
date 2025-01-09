@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\ActualController;
 use App\Http\Controllers\CalculateController;
+use App\Http\Controllers\ForecastingController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Models\Forecasting;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false]);
@@ -12,7 +14,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/aktual', [ActualController::class, 'index'])->name('actual.index');
     Route::get('/produk', [ProductController::class, 'index'])->name('product.index');
-    Route::get('/hasil-peramalan', [CalculateController::class, 'savedResult'])->name('calculate.savedResult');
+    Route::get('/hasil-peramalan', [ForecastingController::class, 'index'])->name('forecasting.index');
 
     Route::get('/help', [App\Http\Controllers\HomeController::class, 'help'])->name('help');
     Route::get('/print-pdf', [CalculateController::class, 'printPDF'])->name('calculate.printPDF');
@@ -29,6 +31,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/perhitungan', [CalculateController::class, 'index'])->name('calculate.index');
     Route::post('/perhitungan', [CalculateController::class, 'result'])->name('calculate.result');
     Route::post('/hasil-peramalan', [CalculateController::class, 'saved'])->name('calculate.saved');
+    Route::delete('/peramalan/{id}', [ForecastingController::class, 'destroy'])->name('forecasting.delete');
+    
     Route::resource('user', UserController::class);
     Route::post('user/restore/{id}', [UserController::class, 'restore'])->name('user.restore');
 
