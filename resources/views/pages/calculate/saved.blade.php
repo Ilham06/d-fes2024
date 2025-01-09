@@ -29,9 +29,10 @@
                                         <td>{{ $record->created_at->format('d F Y, H:i') }}</td>
 
                                         <td class="d-flex gap-2">
-                                            <button class="btn btn-primary"
-                                                onclick="window.location.href='{{ asset('storage/'.$record->path) }}'">Print
-                                                PDF</button>
+                                            <a href="{{ asset('storage/'.$record->path) }}">
+                                                <button class="btn btn-primary">Print
+                                                PDF</button></a>
+                                            
 
                                             @if (auth()->user()->is_admin)
                                                 <form action="{{ route('forecasting.delete', $record->id) }}" method="post">
