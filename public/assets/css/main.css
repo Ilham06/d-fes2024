@@ -3262,18 +3262,18 @@ ul.profile-about-list li.profile-about-list-buttons {
 ------------------------------------------------------------*/
 
 @media (max-width: 1350px) {
-    .page-header .navbar #navbarNav {
+    /* .page-header .navbar #navbarNav {
         flex: 0;
         margin-right: 15px;
-    }
+    } */
 
     .page-header .navbar .logo {
         flex: 0!important;
     }
 
-    /* .page-header .navbar #navbarNav .navbar-nav li a:not(#sidebar-toggle) {
-        display: none;
-    } */
+    .page-header .navbar #navbarNav .navbar-nav li a:not(#sidebar-toggle) {
+        /* display: none; */
+    }
 
     .page-header .navbar #navbarNav #leftNav > li > a#sidebar-toggle {
         transform: rotate(-180deg);

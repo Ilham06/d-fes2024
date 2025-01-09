@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class ActualUpdateRequest extends FormRequest
+class CreateProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,12 +22,7 @@ class ActualUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'periode' => [
-                'required',
-                Rule::unique('actuals')->ignore($this->id)
-            ],
-            'value' => 'required',
-            'product_id' => 'required',
+            'name' => 'required|unique:products,name',
             'note' => 'nullable'
         ];
     }

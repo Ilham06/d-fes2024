@@ -7,28 +7,38 @@ use App\Http\Requests\ActualCreateRequest;
 use App\Http\Requests\ActualUpdateRequest;
 use App\Imports\ActualImport;
 use App\Models\Actual;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ActualController extends Controller
 {
-    public function index() 
+    public function index(Request $request)
     {
-        $actuals = Actual::all();
+        $products = Product::all();
 
-        return view('pages.actual.index', compact('actuals'));
+        $actuals = Actual::with('product')
+            ->when($request->product_id, function ($query, $productId) {
+                return $query->where('product_id', $productId);
+            })
+            ->get();
+
+        return view('pages.actual.index', compact('actuals', 'products'));
     }
 
-    public function create() 
+    public function create()
     {
-        return view('pages.actual.create');
+        $products = Product::all();
+
+        return view('pages.actual.create', compact('products'));
     }
 
-    public function edit($id) 
+    public function edit($id)
     {
-        $actual = Actual::findOrFail($id);
+        $products = Product::all();
+        $actual = Actual::with('product')->findOrFail($id);
 
-        return view('pages.actual.edit', compact('actual'));
+        return view('pages.actual.edit', compact('actual', 'products'));
     }
 
     public function store(ActualCreateRequest $request)
@@ -53,18 +63,18 @@ class ActualController extends Controller
         return redirect()->route('actual.index')->with('success', 'Sukses menghapus data aktual');
     }
 
-    public function import(Request $request) 
+    public function import(Request $request)
     {
         $request->validate([
             'dataset' => 'required|mimes:csv,xls,xlsx'
         ]);
 
         Excel::import(new ActualImport, $request->file('dataset'));
-        
+
         return redirect()->route('actual.index')->with('success', 'sukses import data');
     }
 
-    public function export() 
+    public function export()
     {
         return Excel::download(new ActualExport(), 'data-aktual.xlsx');
     }

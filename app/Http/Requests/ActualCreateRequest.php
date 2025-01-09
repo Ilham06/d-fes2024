@@ -23,6 +23,7 @@ class ActualCreateRequest extends FormRequest
     {
         return [
             'periode' => 'required|unique:actuals,periode',
+            'product_id' => 'required',
             'value' => 'required',
             'note' => 'nullable'
         ];

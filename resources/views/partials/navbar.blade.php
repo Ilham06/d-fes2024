@@ -10,6 +10,10 @@
                             href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link {{ Request::path() == 'produk' ? 'active' : '' }}"
+                            href="{{ route('product.index') }}">Produk</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link {{ Request::path() == 'aktual' ? 'active' : '' }}"
                             href="{{ route('actual.index') }}">Data penjualan</a>
                     </li>

@@ -3,31 +3,19 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Data Penjualan</h5>
+            <h5 class="card-title">Data Produk</h5>
             <p class="card-description">
-                Data historikal penjualan yang akan dihitung untuk meramalkan data.
+                Data produk
             </p>
             <div class="d-flex justify-content-between align-items-center">
                 @if (auth()->user()->is_admin)
                     <div class="">
-                        <a href="{{ route('actual.create') }}"><button class="btn btn-primary me-2">Tambah data
-                                Penjualan</button></a>
+                        <a href="{{ route('product.create') }}"><button class="btn btn-primary me-2">Tambah data</button></a>
                     </div>
                 @endif
-                <form action="{{ route('actual.index') }}" method="GET" class="d-flex">
-                    <select name="product_id" class="form-select me-2" onchange="this.form.submit()">
-                        <option value="">Semua Produk</option>
-                        @foreach ($products as $product)
-                            <option value="{{ $product->id }}"
-                                {{ request('product_id') == $product->id ? 'selected' : '' }}>
-                                {{ $product->name }}
-                            </option>
-                        @endforeach
-                    </select>
-                    <noscript>
-                        <button type="submit" class="btn btn-secondary">Filter</button>
-                    </noscript>
-                </form>
+                {{-- <form action="">
+                    <input type="text" id="" class="form-control" placeholder="cari data ...">
+                </form> --}}
             </div>
             <x-alert-success />
             <div class="table-responsive mt-4">
@@ -35,9 +23,8 @@
                     <thead>
                         <tr>
                             <th scope="col" width="5%">#</th>
-                            <th scope="col">Produk</th>
-                            <th scope="col">Periode</th>
-                            <th scope="col">Data Aktual</th>
+                            <th scope="col">Id Produk</th>
+                            <th scope="col">Nama Produk</th>
                             <th scope="col">Keterangan</th>
                             @if (auth()->user()->is_admin)
                                 <th scope="col" width="10%" class="text-center">Aksi</th>
@@ -45,17 +32,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($actuals as $key => $actual)
+                        @forelse ($products as $key => $product)
                             <tr>
                                 <th scope="row">{{ $key + 1 }}</th>
-                                <td>{{ $actual->product->name }}</td>
-                                <td>{{ $actual->periode }}</td>
-                                <td>{{ $actual->value }}</td>
-                                <td>{{ $actual->note }}</td>
+                                <td>{{ $product->id }}</td>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->note }}</td>
                                 @if (auth()->user()->is_admin)
-                                    <td class="d-flex gap-2"><a href="{{ route('actual.edit', $actual->id) }}"><button
+                                    <td class="d-flex gap-2"><a href="{{ route('product.edit', $product->id) }}"><button
                                                 class="btn btn-light btn-sm">Edit</button></a>
-                                        <form action="{{ route('actual.delete', $actual->id) }}" method="post">
+                                        <form action="{{ route('product.delete', $product->id) }}" method="post">
                                             @method('delete')
                                             @csrf
                                             <button onclick="return confirm('apakah anda ingin menghapus data?')"
