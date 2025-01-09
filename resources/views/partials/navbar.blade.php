@@ -1,7 +1,7 @@
 <div class="page-header">
     <nav class="navbar navbar-expand-lg d-flex justify-content-between">
         <div class="container">
-            <div class="fw-bold text-primary">Forecasting DES</div>
+            <div class="fw-bold text-primary">SISTEM FORECASTING PENJUALAN</div>
 
             <div class="" id="navbarNav">
                 <ul class="navbar-nav" id="leftNav">

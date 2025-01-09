@@ -6,7 +6,7 @@
 
             <div class="col-md-12 col-lg-4">
                 <h4 class="fw-bold text-center mb-2">Forecasting </h4>
-                <h4 class="fw-bold text-center mb-5">Double Exponential Smoothing</h4>
+                <h4 class="fw-bold text-center mb-5">Sistem Peralaman Jumlah Penjualan Produk</h4>
                 <div class="card login-box-container">
                     <div class="card-body">
                         <div class="authent-text">

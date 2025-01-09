@@ -4,9 +4,9 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Data Produk</h5>
-            <p class="card-description">
+            {{-- <p class="card-description">
                 Data produk
-            </p>
+            </p> --}}
             <div class="d-flex justify-content-between align-items-center">
                 @if (auth()->user()->is_admin)
                     <div class="">
