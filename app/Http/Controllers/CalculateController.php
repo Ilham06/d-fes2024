@@ -29,13 +29,21 @@ class CalculateController extends Controller
         return view('pages.calculate.index', compact('products'));
     }
 
+    public function actualsByProduct($id)
+    {
+        $actuals = Actual::where('product_id', $id)->get(); 
+        return response()->json($actuals);
+    }
+
     public function result(CalculateRequest $request)
     {
+
         $alpha = $request->alpha;
         $product_id = $request->product_id;
-        $m = 1;
+        $ids = $request->actuals;
+        $m = 4;
 
-        $actuals = Actual::whereProductId($product_id)->get();
+        $actuals = Actual::whereProductId($product_id)->whereIn('id', $ids)->get();
 
         if (!count($actuals)) {
             return redirect()->route('calculate.index')->with('error', 'tidak ditemukan data aktual, harap isi data aktual terlebih dahulu');

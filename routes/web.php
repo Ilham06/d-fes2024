@@ -18,6 +18,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/help', [App\Http\Controllers\HomeController::class, 'help'])->name('help');
     Route::get('/print-pdf', [CalculateController::class, 'printPDF'])->name('calculate.printPDF');
+    Route::get('/calculate/actuals/{id}', [CalculateController::class, 'actualsByProduct']);
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {

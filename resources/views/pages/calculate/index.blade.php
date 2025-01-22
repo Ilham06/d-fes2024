@@ -24,28 +24,59 @@
                         </div>
                     @enderror
                 </div>
+
+                <!-- Multiple Select for Actual Data -->
                 <div class="mb-3">
-                    <label for="periode" class="form-label">Nilai alpha</label>
-                    <input name="alpha" type="text" class="form-control @error('alpha') is-invalid @enderror"
-                        id="periode">
-                    @error('alpha')
-                        <div id="" class="invalid-feedback">
+                    <label for="actuals" class="form-label">Pilih Data Aktual</label>
+                    <select name="actuals[]" class="form-control @error('actuals') is-invalid @enderror" id="actuals" multiple>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                    @error('actuals')
+                        <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
                 </div>
-                {{-- <div class="mb-3">
-                    <label for="m" class="form-label">Periode</label>
-                    <input value="1" name="m" value="1" type="number"
-                        class="form-control @error('m') is-invalid @enderror" id="m">
-                    @error('m')
-                        <div id="" class="invalid-feedback">
+
+                <div class="mb-3">
+                    <label for="alpha" class="form-label">Nilai alpha</label>
+                    <input name="alpha" type="text" class="form-control @error('alpha') is-invalid @enderror" id="alpha">
+                    @error('alpha')
+                        <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
-                </div> --}}
+                </div>
+
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
+
+    @push('script')
+        <script>
+            // When product is selected, fetch actual data for that product
+            document.getElementById('product_id').addEventListener('change', function() {
+                var productId = this.value;
+
+                if (productId) {
+                    fetch('/calculate/actuals/' + productId)
+                        .then(response => response.json())
+                        .then(data => {
+                            var actualsSelect = document.getElementById('actuals');
+                            actualsSelect.innerHTML = ''; // Clear existing options
+                            console.log(data)
+                            // Populate with actual data
+                            data.forEach(function(actual) {
+                                var option = document.createElement('option');
+                                option.value = actual.id;
+                                option.textContent = `Periode ${actual.periode}, ${actual.value}`; // Assuming 'name' is the field in 'Actual' model
+                                actualsSelect.appendChild(option);
+                            });
+                        })
+                        .catch(error => console.error('Error fetching actuals:', error));
+                }
+            });
+        </script>
+    @endpush
 @endsection
